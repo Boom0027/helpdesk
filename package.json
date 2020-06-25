@@ -5,6 +5,10 @@
   "main": "index.js",
   "author": "tirthamoulib <btirthamouli@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "tsc": "tsc",
+    "dev": "concurrently --kill-others \"tsc --watch\" \"nodemon dist/index.js\""
+  },
   "dependencies": {
     "bcrypt": "^5.0.0",
     "body-parser": "^1.19.0",
@@ -12,6 +16,10 @@
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.9.12",
+    "passport": "^0.4.1",
+    "passport-twitter": "^1.0.4",
+    "socket.io": "^2.3.0",
+    "twit": "^2.2.11",
     "winston": "^3.2.1",
     "winston-daily-rotate-file": "^4.4.2"
   },
@@ -23,6 +31,7 @@
     "@types/node": "^13.13.5",
     "@typescript-eslint/eslint-plugin": "^2.31.0",
     "@typescript-eslint/parser": "^2.31.0",
+    "concurrently": "^5.2.0",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.1.0",
     "eslint-plugin-import": "^2.20.2",
