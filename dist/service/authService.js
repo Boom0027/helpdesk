@@ -27,7 +27,6 @@ class AuthService {
         const token = await jwtHelper_1.sign({
             id: user.id,
             email: user.auth.email,
-            phone: user.auth.phone ? `+${user.auth.phone.code}${user.auth.phone.number}` : '',
         });
         if (!token) {
             throw new internalServerException_1.default('unable to create jwt token');

@@ -17,7 +17,27 @@ export interface ITwitterAccountSchema {
   /**
    * Profile details of the user
    */
-  profile: any
+  profile: {
+    /**
+     * Twitter id
+     */
+    id: string
+
+    /**
+     * Twitter username
+     */
+    username: string
+
+    /**
+     * Twitter display name
+     */
+    displayName: string
+
+    /**
+     * Twitter phone
+     */
+    photoURL: string
+  }
 
   /**
    * When the token is created

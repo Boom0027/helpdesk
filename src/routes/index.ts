@@ -3,8 +3,13 @@
  * Author: Tirthamouli Baidya
  */
 
-import express, { Express } from 'express';
+import { Express } from 'express';
+
+// Step 1: Get the routes
+import authRoutes from './authRoutes';
+import twitterRoutes from './twitterRoutes';
 
 export default (app: Express) => {
-  app.use(express.static('dist'));
+  app.use('/api/auth', authRoutes);
+  app.use('/api/twitter', twitterRoutes);
 };

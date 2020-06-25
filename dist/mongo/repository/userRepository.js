@@ -16,6 +16,7 @@ const userRepository = {
                 auth: {
                     email: newUser.auth.email,
                 },
+                twitterDetails: newUser.twitterDetails,
             };
         }
         catch (_err) {
@@ -33,24 +34,7 @@ const userRepository = {
                 firstName: user.firstName,
                 lastName: user.lastName,
                 auth: user.auth,
-                createdAt: user.createdAt,
-            };
-        }
-        catch (_err) {
-            throw new internalServerException_1.default('error while fetching user by email');
-        }
-    },
-    async getUserByPhone(phoneNumber, code) {
-        try {
-            const user = await userModel_1.default.findOne({ 'auth.phone': { code, number: phoneNumber } });
-            if (!user) {
-                return null;
-            }
-            return {
-                id: user.id,
-                firstName: user.firstName,
-                lastName: user.lastName,
-                auth: user.auth,
+                twitterDetails: user.twitterDetails,
                 createdAt: user.createdAt,
             };
         }

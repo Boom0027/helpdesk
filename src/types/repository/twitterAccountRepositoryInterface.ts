@@ -5,9 +5,19 @@
  */
 import { ITwitterAccountSchema } from '../schema/twitterAccountSchemaInterface';
 
-export interface ITokenRepository {
+export interface ITwitterAccountRpository {
   /**
    * Create a new twitter user
    */
-  createToken: (token: ITwitterAccountSchema) => Promise<ITwitterAccountSchema>
+  addUser: (user: ITwitterAccountSchema) => Promise<ITwitterAccountSchema>
+
+  /**
+   * Get a user by their twitter user id
+   */
+  getUserByID: (userID: string) => Promise<ITwitterAccountSchema | null>
+
+  /**
+   * Upates all details of the user
+   */
+  updateUser: (user: ITwitterAccountSchema) => Promise<ITwitterAccountSchema>
 }

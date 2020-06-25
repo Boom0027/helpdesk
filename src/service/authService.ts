@@ -67,7 +67,6 @@ class AuthService {
     const token = await sign({
       id: user.id,
       email: user.auth.email,
-      phone: user.auth.phone ? `+${user.auth.phone.code}${user.auth.phone.number}` : '',
     });
 
     // Step 6: Check if token is created successfully

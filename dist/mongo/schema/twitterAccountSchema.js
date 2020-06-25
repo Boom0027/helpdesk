@@ -1,34 +1,30 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = require("mongoose");
-const userSchema = new mongoose_1.Schema({
-    firstName: {
+const twitterAccountSchema = new mongoose_1.Schema({
+    token: {
         type: String,
         required: true,
     },
-    lastName: {
+    tokenSecret: {
         type: String,
         required: true,
     },
-    auth: {
-        email: {
+    profile: {
+        id: {
             type: String,
             required: true,
         },
-        password: {
+        username: {
             type: String,
             required: true,
         },
-    },
-    twitterDetails: {
-        permissionLevel: {
+        displayName: {
             type: String,
-            enum: ['admin', 'user'],
             required: true,
         },
-        account: {
-            type: mongoose_1.Schema.Types.ObjectId,
-            ref: 'twitter_account',
+        photoURL: {
+            type: String,
             required: true,
         },
     },
@@ -37,6 +33,5 @@ const userSchema = new mongoose_1.Schema({
         default: Date.now,
     },
 });
-userSchema.index({ 'auth.email': 1 }, { unique: true });
-userSchema.index({ 'twitterDetails.account': 1 });
-exports.default = userSchema;
+twitterAccountSchema.index({ 'profile.id': 1 }, { unique: true });
+exports.default = twitterAccountSchema;
