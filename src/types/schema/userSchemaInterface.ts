@@ -7,7 +7,7 @@ export interface IUserSchema {
   /**
    * ID of the user
    */
-  id: string,
+  id?: string,
 
   /**
    * First name of the user

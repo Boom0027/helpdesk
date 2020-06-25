@@ -16,9 +16,17 @@ const { TWITTER_API_KEY, TWITTER_API_SECRET } = process.env;
 passport.use(new Strategy({
   consumerKey: TWITTER_API_KEY!,
   consumerSecret: TWITTER_API_SECRET!,
-  callbackURL: 'http://127.0.0.1:3000',
+  callbackURL: 'http://localhost:3000/api/twitter/callback',
 }, (token, tokenSecret, {
   id, username, displayName, photos,
 }, done) => getTwitterService.addTwitterAccount(token, tokenSecret, {
   id, username, displayName, photos,
 }, done)));
+
+passport.serializeUser((user, cb) => {
+  cb(null, user);
+});
+
+passport.deserializeUser((obj, cb) => {
+  cb(null, obj);
+});

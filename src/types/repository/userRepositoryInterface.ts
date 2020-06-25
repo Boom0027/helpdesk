@@ -8,10 +8,16 @@ export interface IUserRepository {
   /**
    * Create a new user
    */
-  createUser: (user: IUserSchema) => Promise<IUserSchema>
+  createUser: (firstName: string, lastName: string, email: string,
+    password: string, twitterAccountID: string, twitterPermissionLevel: 'admin' | 'user') => Promise<IUserSchema>
 
   /**
    * Get user by email
    */
   getUserByEmail: (email: string) => Promise<IUserSchema | null>
+
+  /**
+   * Get the root user by id
+   */
+  getRootUserForTwitterAccount: (id: string) => Promise<IUserSchema | null>
 }

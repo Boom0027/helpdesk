@@ -5,6 +5,11 @@ import { IUserSchema } from './userSchemaInterface';
 
 export interface ITokenInterface {
   /**
+   * Id of the user
+   */
+  id?: string,
+
+  /**
    * User whose token it is
    */
   user: IUserSchema

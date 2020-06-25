@@ -5,6 +5,11 @@
 
 export interface ITwitterAccountSchema {
   /**
+   * Id of twitter account
+   */
+  id?: string
+
+  /**
    * The token details
    */
   token: string

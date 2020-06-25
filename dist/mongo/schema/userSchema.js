@@ -38,5 +38,5 @@ const userSchema = new mongoose_1.Schema({
     },
 });
 userSchema.index({ 'auth.email': 1 }, { unique: true });
-userSchema.index({ 'twitterDetails.account': 1 });
+userSchema.index({ 'twitterDetails.account': 1, 'twitterDetails.permissionLevel': 1 });
 exports.default = userSchema;

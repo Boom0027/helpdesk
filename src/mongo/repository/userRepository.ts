@@ -6,7 +6,6 @@
 import UserModel from '../model/userModel';
 
 // Step 2: Interface import
-import { IUserSchema } from '../../types/schema/userSchemaInterface';
 import { IUserRepository } from '../../types/repository/userRepositoryInterface';
 
 // Step 3: Exceptions
@@ -18,10 +17,22 @@ const userRepository: IUserRepository = {
    * Create a new user
    * @param user
    */
-  async createUser(user: IUserSchema) {
+  async createUser(firstName: string, lastName: string, email: string,
+    password: string, twitterAccountID: string, twitterPermissionLevel: 'admin' | 'user') {
     try {
       // Step I: Create a new user
-      const newUser = await new UserModel(user).save();
+      const newUser = await new UserModel({
+        firstName,
+        lastName,
+        auth: {
+          email,
+          password,
+        },
+        twitterDetails: {
+          permissionLevel: twitterPermissionLevel,
+          account: twitterAccountID,
+        },
+      }).save();
 
       // Step II: Format and return the data
       return {
@@ -46,6 +57,34 @@ const userRepository: IUserRepository = {
     try {
       // Step I: Get the user
       const user = await UserModel.findOne({ 'auth.email': email });
+
+      // Step II: Check if we have received an user
+      if (!user) {
+        return null;
+      }
+
+      // Step III: Return the user
+      return {
+        id: user.id,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        auth: user.auth,
+        twitterDetails: user.twitterDetails,
+        createdAt: user.createdAt,
+      };
+    } catch (_err) {
+      throw new InternalServerException('error while fetching user by email');
+    }
+  },
+
+  /**
+   * Get the root user accout for twitter
+   * @param id
+   */
+  async getRootUserForTwitterAccount(id: string) {
+    try {
+      // Step I: Get the user
+      const user = await UserModel.findOne({ 'twitterDetails.account': id, 'twitterDetails.permissionLevel': 'admin' });
 
       // Step II: Check if we have received an user
       if (!user) {

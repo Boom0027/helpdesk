@@ -74,7 +74,7 @@ const userSchema = new Schema({
 
 // Step 2: Adding index
 userSchema.index({ 'auth.email': 1 }, { unique: true });
-userSchema.index({ 'twitterDetails.account': 1 });
+userSchema.index({ 'twitterDetails.account': 1, 'twitterDetails.permissionLevel': 1 });
 
 // Step 3: Export
 export default userSchema;
