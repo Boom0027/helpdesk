@@ -46,19 +46,25 @@ router.get('/auth', passport.authenticate('twitter'));
 router.get('/callback',
   passport.authenticate('twitter'), async (req:any, res) => {
     // Step I: Check if user is there
-    if (!('user' in req) || !('profile' in req.user) || !('displayName' in req.user.profile) || !('id' in req.user.profile)) {
-      res.redirect('/register');
+    if (!('user' in req) || !('profile' in req.user) || !('displayName' in req.user.profile) || !('id' in req.user.profile) || !('oldUser' in req.user)) {
+      return res.redirect('/register');
     }
 
     // Step 2: Sign the user
     const token = await signTwitterUser({
       twitterId: req.user.profile.id! as string,
+      isRoot: true,
     });
 
     // Step 3: Check if token was created
-    if (token) {
-      res.redirect(`/register?token=${encodeURI(token)}`);
+    if (token && req.user.oldUser === true) {
+      return res.redirect(`/login?token=${encodeURI(token)}`);
+    } if (token && req.user.oldUser === false) {
+      return res.redirect(`/register?token=${encodeURI(token)}`);
     }
+
+    // Step 4: Default redirect
+    return res.redirect('/register');
   });
 
 // Step 5: Exporting the router

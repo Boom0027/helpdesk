@@ -2,9 +2,8 @@
  * Authentication service
  * Author: Tirthamouli Baidya
  */
-
+import { IAuthService } from '../types/service/authServiceInterface';
 import { IUserRepository } from '../types/repository/userRepositoryInterface';
-import { ITokenRepository } from '../types/repository/tokenRepositoryInterface';
 import { ITwitterAccountRpository } from '../types/repository/twitterAccountRepositoryInterface';
 
 // Helpers
@@ -20,16 +19,11 @@ import InternalServer from '../exception/internalServerException';
 /**
  * Authentication service layer
  */
-class AuthService {
+class AuthService implements IAuthService {
   /**
    * The user repository
    */
   private userRepository: IUserRepository
-
-  /**
-   * Token repository
-   */
-  private tokenRepository: ITokenRepository
 
   /**
    * Twitter repository
@@ -40,10 +34,9 @@ class AuthService {
    * Dependency injections
    * @param userRepository
    */
-  constructor(userRepository: IUserRepository, tokenRepository: ITokenRepository,
+  constructor(userRepository: IUserRepository,
     twitterAccountRepository: ITwitterAccountRpository) {
     this.userRepository = userRepository;
-    this.tokenRepository = tokenRepository;
     this.twitterAccountRepository = twitterAccountRepository;
   }
 
@@ -97,20 +90,19 @@ class AuthService {
    * @param UserDetails
    */
   async registerUser({
-    firstName, lastName, email, password, token,
+    firstName, lastName, password, token, email,
   }:{
     firstName: string,
     lastName: string,
-    email: string,
+    email?: string,
     password: string
     token: string
   }) {
     // Step 1: Verify all the types
     const formattedFirstName = nameValidator(firstName);
     const formattedLastName = nameValidator(lastName);
-    const formattedEmail = emailValidator(email);
     const hashedPassword = await passwordValidator(password);
-    if (!formattedFirstName || !formattedLastName || !formattedEmail || !hashedPassword) {
+    if (!formattedFirstName || !formattedLastName || !hashedPassword) {
       throw new BadRequest('Invalid data');
     }
 
@@ -133,7 +125,18 @@ class AuthService {
     // Step 5: Check if there is a root user for the twitter account
     const rootUser = await this.userRepository.getRootUserForTwitterAccount(twitterUserDetails.id!);
 
-    // Step 6: Register an app user if there is or register a root user
+    // Step 6: Get formatted email
+    let formattedEmail;
+    if (twitterUser.email) {
+      formattedEmail = emailValidator(twitterUser.email);
+    } else {
+      formattedEmail = emailValidator(email);
+    }
+    if (!formattedEmail) {
+      throw new BadRequest('Invalid email');
+    }
+
+    // Step 7: Register an app user if there is or register a root user
     let user;
     if (!rootUser) {
       user = await this.userRepository.createUser(
@@ -155,18 +158,18 @@ class AuthService {
       );
     }
 
-    // Step 7: Create a token
+    // Step 8: Create a token
     const jwtToken = await signUser({
       id: user.id!,
       email: user.auth.email,
     });
 
-    // Step 8: Unable to create token
-    if (!token) {
+    // Step 9: Unable to create token
+    if (!jwtToken) {
       throw new InternalServer('unable to create jwt token');
     }
 
-    // Step 9: Return the token
+    // Step 10: Return the token
     return {
       code: 200,
       token: jwtToken,

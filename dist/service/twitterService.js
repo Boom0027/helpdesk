@@ -18,10 +18,10 @@ class TwitterService {
         const oldUser = await this.twitterAccountRepository.getUserByID(id);
         if (oldUser) {
             const user = await this.twitterAccountRepository.updateUser(userdetails);
-            return done(null, user);
+            return done(null, { ...user, oldUser: true });
         }
         const user = await this.twitterAccountRepository.addUser(userdetails);
-        return done(null, user);
+        return done(null, { ...user, oldUser: false });
     }
 }
 exports.default = TwitterService;

@@ -53,7 +53,7 @@ export function verifyUser(token: string): Promise<TstoredData | null> {
   });
 }
 
-type TtwutterUser = { twitterId: string }
+type TtwutterUser = { twitterId: string, isRoot: boolean, email?: string, }
 
 /**
  * Sign a twitter user

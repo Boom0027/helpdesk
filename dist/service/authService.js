@@ -10,9 +10,8 @@ const badRequestException_1 = __importDefault(require("../exception/badRequestEx
 const forbiddenException_1 = __importDefault(require("../exception/forbiddenException"));
 const internalServerException_1 = __importDefault(require("../exception/internalServerException"));
 class AuthService {
-    constructor(userRepository, tokenRepository, twitterAccountRepository) {
+    constructor(userRepository, twitterAccountRepository) {
         this.userRepository = userRepository;
-        this.tokenRepository = tokenRepository;
         this.twitterAccountRepository = twitterAccountRepository;
     }
     async loginWithEmailAndPassword({ email, password }) {
@@ -40,12 +39,11 @@ class AuthService {
             details: { firstName: user.firstName, lastName: user.lastName },
         };
     }
-    async registerUser({ firstName, lastName, email, password, token, }) {
+    async registerUser({ firstName, lastName, password, token, email, }) {
         const formattedFirstName = validationHelpers_1.nameValidator(firstName);
         const formattedLastName = validationHelpers_1.nameValidator(lastName);
-        const formattedEmail = validationHelpers_1.emailValidator(email);
         const hashedPassword = await validationHelpers_1.passwordValidator(password);
-        if (!formattedFirstName || !formattedLastName || !formattedEmail || !hashedPassword) {
+        if (!formattedFirstName || !formattedLastName || !hashedPassword) {
             throw new badRequestException_1.default('Invalid data');
         }
         const twitterUser = await jwtHelper_1.verifyTwitterUser(token);
@@ -57,6 +55,16 @@ class AuthService {
             throw new forbiddenException_1.default('Invalid twitter account');
         }
         const rootUser = await this.userRepository.getRootUserForTwitterAccount(twitterUserDetails.id);
+        let formattedEmail;
+        if (twitterUser.email) {
+            formattedEmail = validationHelpers_1.emailValidator(twitterUser.email);
+        }
+        else {
+            formattedEmail = validationHelpers_1.emailValidator(email);
+        }
+        if (!formattedEmail) {
+            throw new badRequestException_1.default('Invalid email');
+        }
         let user;
         if (!rootUser) {
             user = await this.userRepository.createUser(formattedFirstName, formattedLastName, formattedEmail, hashedPassword, twitterUserDetails.id, 'admin');
@@ -68,7 +76,7 @@ class AuthService {
             id: user.id,
             email: user.auth.email,
         });
-        if (!token) {
+        if (!jwtToken) {
             throw new internalServerException_1.default('unable to create jwt token');
         }
         return {

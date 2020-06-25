@@ -51,14 +51,14 @@ class TwitterService {
       const user = await this.twitterAccountRepository.updateUser(userdetails);
 
       // Step 1.2 Done
-      return done(null, user);
+      return done(null, { ...user, oldUser: true });
     }
 
     // Step 2: Add the new user
     const user = await this.twitterAccountRepository.addUser(userdetails);
 
     // Step 3: Done
-    return done(null, user);
+    return done(null, { ...user, oldUser: false });
   }
 }
 
