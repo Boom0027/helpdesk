@@ -12,7 +12,7 @@ import { IUserRepository } from '../../types/repository/userRepositoryInterface'
 import InternalServerException from '../../exception/internalServerException';
 
 // Step 4: Define the functions
-const userRepository: IUserRepository = {
+const UserRepository: IUserRepository = {
   /**
    * Create a new user
    * @param user
@@ -107,4 +107,4 @@ const userRepository: IUserRepository = {
 };
 
 // Step 5: Export
-export default userRepository;
+export default UserRepository;

@@ -43,7 +43,7 @@ export function get(token: string, tokenSecret: string, displayName: string) {
       }
 
       // Step 2: Resolve data
-      resolve(data);
+      resolve(data.statuses[0].user);
     });
   });
 }

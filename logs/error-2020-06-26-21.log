@@ -1,0 +1,18 @@
+2020-06-26 21:24:29 error: uncaughtException: userRepository is not defined
+ReferenceError: userRepository is not defined
+    at Object.<anonymous> (C:\Users\btirt\Desktop\Projects\helpdesk\server\dist\mongo\repository\userRepository.js:76:19)
+    at Module._compile (internal/modules/cjs/loader.js:959:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:995:10)
+    at Module.load (internal/modules/cjs/loader.js:815:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:727:14)
+    at Module.require (internal/modules/cjs/loader.js:852:19)
+    at require (internal/modules/cjs/helpers.js:74:18)
+    at Object.<anonymous> (C:\Users\btirt\Desktop\Projects\helpdesk\server\dist\factory\serviceFactory.js:10:42)
+    at Module._compile (internal/modules/cjs/loader.js:959:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:995:10)
+    at Module.load (internal/modules/cjs/loader.js:815:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:727:14)
+    at Module.require (internal/modules/cjs/loader.js:852:19)
+    at require (internal/modules/cjs/helpers.js:74:18)
+    at Object.<anonymous> (C:\Users\btirt\Desktop\Projects\helpdesk\server\dist\factory\controllerFactory.js:9:26)
+    at Module._compile (internal/modules/cjs/loader.js:959:30)

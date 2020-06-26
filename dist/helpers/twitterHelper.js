@@ -26,7 +26,7 @@ function get(token, tokenSecret, displayName) {
             if (err) {
                 reject(new internalServerException_1.default(err.message));
             }
-            resolve(data);
+            resolve(data.statuses[0].user);
         });
     });
 }

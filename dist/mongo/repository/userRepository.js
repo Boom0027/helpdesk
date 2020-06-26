@@ -5,7 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const userModel_1 = __importDefault(require("../model/userModel"));
 const internalServerException_1 = __importDefault(require("../../exception/internalServerException"));
-const userRepository = {
+const UserRepository = {
     async createUser(firstName, lastName, email, password, twitterAccountID, twitterPermissionLevel) {
         try {
             const newUser = await new userModel_1.default({
@@ -73,4 +73,4 @@ const userRepository = {
         }
     },
 };
-exports.default = userRepository;
+exports.default = UserRepository;
