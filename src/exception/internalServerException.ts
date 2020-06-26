@@ -18,7 +18,7 @@ class InternalServer extends Error {
    */
   constructor(message: string) {
     // Step 1: Call the parent constuctor
-    super('internal server error');
+    super('500');
 
     // Step 2: Log the error
     logger.error(`ERROR 500: ${message}`);

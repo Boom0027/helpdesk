@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const logger_1 = __importDefault(require("../logger/logger"));
 class BadRequest extends Error {
     constructor(message) {
-        super('bad request');
+        super('400');
         this.status = 400;
         logger_1.default.error(`ERROR 400: ${message}`);
         this.name = this.constructor.name;

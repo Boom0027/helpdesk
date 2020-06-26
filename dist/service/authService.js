@@ -29,6 +29,7 @@ class AuthService {
         const token = await jwtHelper_1.signUser({
             id: user.id,
             email: user.auth.email,
+            twitterAccountId: user.twitterDetails.account.profile.id,
         });
         if (!token) {
             throw new internalServerException_1.default('unable to create jwt token');
@@ -75,6 +76,7 @@ class AuthService {
         const jwtToken = await jwtHelper_1.signUser({
             id: user.id,
             email: user.auth.email,
+            twitterAccountId: twitterUser.twitterId,
         });
         if (!jwtToken) {
             throw new internalServerException_1.default('unable to create jwt token');

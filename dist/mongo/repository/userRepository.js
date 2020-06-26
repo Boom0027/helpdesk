@@ -36,7 +36,7 @@ const userRepository = {
     },
     async getUserByEmail(email) {
         try {
-            const user = await userModel_1.default.findOne({ 'auth.email': email });
+            const user = await userModel_1.default.findOne({ 'auth.email': email }).populate('twitterDetails.account');
             if (!user) {
                 return null;
             }

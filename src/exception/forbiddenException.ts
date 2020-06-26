@@ -17,7 +17,7 @@ class Forbidden extends Error {
    */
   constructor(message: string) {
     // Step 1: Call the parent constuctor
-    super('forbidden');
+    super('403');
 
     // Step 2: Log the error
     logger.error(`ERROR 403: ${message}`);

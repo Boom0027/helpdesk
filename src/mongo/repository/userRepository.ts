@@ -56,7 +56,7 @@ const userRepository: IUserRepository = {
   async getUserByEmail(email: string) {
     try {
       // Step I: Get the user
-      const user = await UserModel.findOne({ 'auth.email': email });
+      const user = await UserModel.findOne({ 'auth.email': email }).populate('twitterDetails.account');
 
       // Step II: Check if we have received an user
       if (!user) {

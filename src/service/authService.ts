@@ -69,6 +69,7 @@ class AuthService implements IAuthService {
     const token = await signUser({
       id: user.id!,
       email: user.auth.email,
+      twitterAccountId: user.twitterDetails.account.profile.id!,
     });
 
     // Step 6: Check if token is created successfully
@@ -162,6 +163,7 @@ class AuthService implements IAuthService {
     const jwtToken = await signUser({
       id: user.id!,
       email: user.auth.email,
+      twitterAccountId: twitterUser.twitterId,
     });
 
     // Step 9: Unable to create token

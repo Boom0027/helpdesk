@@ -1,0 +1,62 @@
+2020-06-26 13:01:23 error: ERROR 403: Invalid twitter account
+2020-06-26 13:02:35 error: ERROR 403: Invalid twitter account
+2020-06-26 13:03:39 error: ERROR 403: Invalid twitter account
+2020-06-26 13:06:25 error: ERROR 403: Invalid twitter account
+2020-06-26 13:08:22 error: ERROR 403: Invalid twitter account
+2020-06-26 13:12:24 error: uncaughtException: Unexpected token ')'
+C:\Users\btirt\Desktop\Projects\helpdesk\server\dist\helpers\jwtHelper.js:54
+            if (authData && ) {
+                            ^
+
+SyntaxError: Unexpected token ')'
+    at Module._compile (internal/modules/cjs/loader.js:895:18)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:995:10)
+    at Module.load (internal/modules/cjs/loader.js:815:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:727:14)
+    at Module.require (internal/modules/cjs/loader.js:852:19)
+    at require (internal/modules/cjs/helpers.js:74:18)
+    at Object.<anonymous> (C:\Users\btirt\Desktop\Projects\helpdesk\server\dist\service\authService.js:7:21)
+    at Module._compile (internal/modules/cjs/loader.js:959:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:995:10)
+    at Module.load (internal/modules/cjs/loader.js:815:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:727:14)
+    at Module.require (internal/modules/cjs/loader.js:852:19)
+    at require (internal/modules/cjs/helpers.js:74:18)
+    at Object.<anonymous> (C:\Users\btirt\Desktop\Projects\helpdesk\server\dist\factory\serviceFactory.js:9:39)
+    at Module._compile (internal/modules/cjs/loader.js:959:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:995:10)
+2020-06-26 13:12:52 error: uncaughtException: Unexpected token ','
+C:\Users\btirt\Desktop\Projects\helpdesk\server\dist\helpers\jwtHelper.js:55
+                resolve(authData.user ? as : , TtwutterUser);
+                                             ^
+
+SyntaxError: Unexpected token ','
+    at Module._compile (internal/modules/cjs/loader.js:895:18)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:995:10)
+    at Module.load (internal/modules/cjs/loader.js:815:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:727:14)
+    at Module.require (internal/modules/cjs/loader.js:852:19)
+    at require (internal/modules/cjs/helpers.js:74:18)
+    at Object.<anonymous> (C:\Users\btirt\Desktop\Projects\helpdesk\server\dist\service\authService.js:7:21)
+    at Module._compile (internal/modules/cjs/loader.js:959:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:995:10)
+    at Module.load (internal/modules/cjs/loader.js:815:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:727:14)
+    at Module.require (internal/modules/cjs/loader.js:852:19)
+    at require (internal/modules/cjs/helpers.js:74:18)
+    at Object.<anonymous> (C:\Users\btirt\Desktop\Projects\helpdesk\server\dist\factory\serviceFactory.js:9:39)
+    at Module._compile (internal/modules/cjs/loader.js:959:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:995:10)
+2020-06-26 13:16:28 error: ERROR 403: Invalid twitter account
+2020-06-26 13:17:00 error: ERROR 403: Invalid twitter account
+2020-06-26 13:18:40 error: uncaughtException: Error connecting to db: connection <monitor> to 23.21.129.253:27017 closed
+Error: Error connecting to db: connection <monitor> to 23.21.129.253:27017 closed
+    at C:\Users\btirt\Desktop\Projects\helpdesk\server\node_modules\connect-mongodb-session\index.js:78:17
+    at C:\Users\btirt\Desktop\Projects\helpdesk\server\node_modules\mongodb\lib\utils.js:722:9
+    at C:\Users\btirt\Desktop\Projects\helpdesk\server\node_modules\mongodb\lib\mongo_client.js:223:23
+    at connectCallback (C:\Users\btirt\Desktop\Projects\helpdesk\server\node_modules\mongodb\lib\operations\connect.js:361:5)
+    at C:\Users\btirt\Desktop\Projects\helpdesk\server\node_modules\mongodb\lib\operations\connect.js:594:14
+    at Object.callback (C:\Users\btirt\Desktop\Projects\helpdesk\server\node_modules\mongodb\lib\core\sdam\topology.js:285:11)
+    at Timeout._onTimeout (C:\Users\btirt\Desktop\Projects\helpdesk\server\node_modules\mongodb\lib\core\sdam\topology.js:435:25)
+    at listOnTimeout (internal/timers.js:531:17)
+    at processTimers (internal/timers.js:475:7)

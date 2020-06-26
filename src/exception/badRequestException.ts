@@ -17,7 +17,7 @@ class BadRequest extends Error {
    */
   constructor(message: string) {
     // Step 1: Call the parent constuctor
-    super('bad request');
+    super('400');
 
     // Step 2: Log the error
     logger.error(`ERROR 400: ${message}`);

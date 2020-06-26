@@ -26,7 +26,11 @@ function verifyUser(token) {
             if (err) {
                 resolve(null);
             }
-            resolve(authData);
+            if (!authData || !('user' in authData)) {
+                return resolve(null);
+            }
+            const formattedAuth = authData;
+            return resolve(formattedAuth.user);
         });
     });
 }
@@ -35,7 +39,7 @@ function signTwitterUser(user) {
     return new Promise((resolve, reject) => {
         jsonwebtoken_1.default.sign({ user }, process.env.JWT_SECRET, {
             algorithm: 'HS512',
-            expiresIn: '1m',
+            expiresIn: '1d',
         }, (err, token) => {
             if (err) {
                 reject(new internalServerException_1.default('unable to sign jwt token'));
@@ -49,9 +53,13 @@ function verifyTwitterUser(token) {
     return new Promise((resolve) => {
         jsonwebtoken_1.default.verify(token, process.env.JWT_SECRET, (err, authData) => {
             if (err) {
-                resolve(null);
+                return resolve(null);
             }
-            resolve(authData);
+            if (!authData || !('user' in authData)) {
+                return resolve(null);
+            }
+            const formattedAuth = authData;
+            return resolve(formattedAuth.user);
         });
     });
 }
