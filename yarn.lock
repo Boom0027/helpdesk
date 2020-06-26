@@ -210,6 +210,11 @@
     "@types/qs" "*"
     "@types/serve-static" "*"
 
+"@types/geojson@*":
+  version "7946.0.7"
+  resolved "https://registry.yarnpkg.com/@types/geojson/-/geojson-7946.0.7.tgz#c8fa532b60a0042219cdf173ca21a975ef0666ad"
+  integrity sha512-wE2v81i4C4Ol09RtsWFAqg3BUitWbHSpSlIo+bNdsCJijO9sjme+zm+73ZMCa/qMC8UEERxzGbvmr1cffo2SiQ==
+
 "@types/json-schema@^7.0.3":
   version "7.0.5"
   resolved "https://registry.yarnpkg.com/@types/json-schema/-/json-schema-7.0.5.tgz#dcce4430e64b443ba8945f0290fb564ad5bac6dd"
@@ -290,6 +295,14 @@
   dependencies:
     "@types/express-serve-static-core" "*"
     "@types/mime" "*"
+
+"@types/twit@^2.2.24":
+  version "2.2.24"
+  resolved "https://registry.yarnpkg.com/@types/twit/-/twit-2.2.24.tgz#20ec1cf1f6ab362393dd18b8271538d2456fd717"
+  integrity sha512-VUAPyx3tDlQjzJCLqClNjI9yWha7UCCdwGMnO2LeH5W9CA48PdsmNAKxGwbVVc7aMB5Wv3nZQ2WUaSAVAS/49Q==
+  dependencies:
+    "@types/geojson" "*"
+    "@types/node" "*"
 
 "@typescript-eslint/eslint-plugin@^2.31.0":
   version "2.34.0"

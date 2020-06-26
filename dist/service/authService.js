@@ -30,6 +30,9 @@ class AuthService {
             id: user.id,
             email: user.auth.email,
             twitterAccountId: user.twitterDetails.account.profile.id,
+            token: user.twitterDetails.account.token,
+            tokenSecret: user.twitterDetails.account.tokenSecret,
+            twitterName: user.twitterDetails.account.profile.displayName,
         });
         if (!token) {
             throw new internalServerException_1.default('unable to create jwt token');
@@ -77,6 +80,9 @@ class AuthService {
             id: user.id,
             email: user.auth.email,
             twitterAccountId: twitterUser.twitterId,
+            token: twitterUserDetails.token,
+            tokenSecret: twitterUserDetails.tokenSecret,
+            twitterName: twitterUserDetails.profile.displayName,
         });
         if (!jwtToken) {
             throw new internalServerException_1.default('unable to create jwt token');

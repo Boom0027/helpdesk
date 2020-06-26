@@ -1,5 +1,6 @@
 /**
  * Interface for auth service
+ * Author: Tirthamouli Baidya
  */
 
 // Step 1: Defining common response

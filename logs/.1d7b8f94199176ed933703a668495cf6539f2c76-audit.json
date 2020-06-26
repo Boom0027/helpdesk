@@ -49,6 +49,16 @@
             "date": 1593163802338,
             "name": "logs\\error-2020-06-26-15.log",
             "hash": "7aa98636ac82f1a6a70a8c894aec4d6e"
+        },
+        {
+            "date": 1593167417639,
+            "name": "logs\\error-2020-06-26-16.log",
+            "hash": "62d171c5156ba25943ef2e8ce6e3d376"
+        },
+        {
+            "date": 1593171004057,
+            "name": "logs\\error-2020-06-26-17.log",
+            "hash": "364a571927335948f01171bc53c7b3d9"
         }
     ]
 }

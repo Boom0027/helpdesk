@@ -8,7 +8,8 @@ import InternalServer from '../exception/internalServerException';
 /**
  * Type of the stored data in JWT
  */
-type TstoredData = { id: string, email: string, twitterAccountId: string }
+type TstoredData = { id: string, email: string, twitterAccountId: string,
+  token: string, tokenSecret: string, twitterName: string }
 
 /**
  * Sign a JWT Token

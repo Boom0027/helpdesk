@@ -70,6 +70,9 @@ class AuthService implements IAuthService {
       id: user.id!,
       email: user.auth.email,
       twitterAccountId: user.twitterDetails.account.profile.id!,
+      token: user.twitterDetails.account.token,
+      tokenSecret: user.twitterDetails.account.tokenSecret,
+      twitterName: user.twitterDetails.account.profile.displayName,
     });
 
     // Step 6: Check if token is created successfully
@@ -164,6 +167,9 @@ class AuthService implements IAuthService {
       id: user.id!,
       email: user.auth.email,
       twitterAccountId: twitterUser.twitterId,
+      token: twitterUserDetails.token,
+      tokenSecret: twitterUserDetails.tokenSecret,
+      twitterName: twitterUserDetails.profile.displayName,
     });
 
     // Step 9: Unable to create token
